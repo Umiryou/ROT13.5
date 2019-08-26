@@ -26,7 +26,9 @@ int main()
 
             if ((word[j - 1] == 'a') || (word[j - 1] == 'e') || (word[j - 1] == 'i') || (word[j - 1] == 'o') || (word[j - 1] == 'u'))
             {
-                word[j] = word[j] + 14 % 26;
+                word[j] = word[j] + 13 + 26 % 26;
+                j++;
+                word[j] = word[j] + 14 + 26 % 26;
             }
 
             else
