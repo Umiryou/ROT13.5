@@ -1,0 +1,44 @@
+/*
+Francis Fermo
+UCFID 2768678
+COP 3502 Section 2
+Assignment 0
+ROT 13.5
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    int n;
+    char word[101];
+
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%s", word);
+        
+        for (int j =  0; j < strlen(word); j++)
+        {
+
+            if ((word[j - 1] == 'a') || (word[j - 1] == 'e') || (word[j - 1] == 'i') || (word[j - 1] == 'o') || (word[j - 1] == 'u'))
+            {
+                word[j] = word[j] + 14 % 26;
+            }
+
+            else
+            {
+                word[j] = word[j] + 13 % 26;
+            }
+            
+        }
+        
+
+        printf("%s\n", word);
+    }
+
+    return 0;
+}
