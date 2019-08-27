@@ -12,8 +12,10 @@ ROT 13.5
 
 int main()
 {
-    int n;
+    int n, isVowel, temp;
     char word[101];
+    const int end = 'z';
+    const int range = 26;;
 
     scanf("%d", &n);
 
@@ -23,24 +25,43 @@ int main()
         
         for (int j =  0; j < strlen(word); j++)
         {
-
-            if ((word[j - 1] == 'a') || (word[j - 1] == 'e') || (word[j - 1] == 'i') || (word[j - 1] == 'o') || (word[j - 1] == 'u'))
+            // Checks for if char at position j is a vowel or not. 1 = true, 0 = false.
+            if ((word[j] == 'a') || (word[j] == 'e') || (word[j] == 'i') || (word[j] == 'o') || (word[j] == 'u'))
             {
-                word[j] = word[j] + 13 + 26 % 26;
+                isVowel = 1;
+            }
+            // I know this else redundant.
+            else
+            {
+                isVowel = 0;
+            }
+            
+
+            if (isVowel == 1)
+            {
+                word[j] = word[j] + 13;
+                printf("%d\n", word[j]);
+                // Checks to see if char at position j exceeds 'z'. If so, subtract by 26.
+                if (word[j] > end)
+                    word[j] = word[j] - range;
+                // Increment by one. Char after vowel needs to be shifted by 14 instead of 13.
                 j++;
-                word[j] = word[j] + 14 + 26 % 26;
+                word [j] = word[j] + 14;
+                // Checks to see if char at position j exceeds 'z'. If so, subtract by 26.
+                if (word[j] > end)
+                    word[j] = word[j] - range;
             }
 
             else
             {
-                word[j] = word[j] + 13 % 26;
+                word[j] = word[j] + 13;
+                // Checks to see if char at position j exceeds 'z'. If so, subtract by 26.
+                if (word[j] > end)
+                    word[j] = word[j] - range;
             }
-            
-        }
-        
 
+        }
         printf("%s\n", word);
     }
-
     return 0;
 }
